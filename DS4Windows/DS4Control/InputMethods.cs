@@ -158,6 +158,23 @@ namespace DS4Windows
                 sendInputs[0].Type = INPUT_KEYBOARD;
                 sendInputs[0].Data.Keyboard.ExtraInfo = IntPtr.Zero;
                 sendInputs[0].Data.Keyboard.Flags = KEYEVENTF_SCANCODE;
+
+                switch ((System.Windows.Forms.Keys)key)
+                {
+                    case System.Windows.Forms.Keys.Up:
+                    case System.Windows.Forms.Keys.Down:
+                    case System.Windows.Forms.Keys.Left:
+                    case System.Windows.Forms.Keys.Right:
+                    case System.Windows.Forms.Keys.Insert:
+                    case System.Windows.Forms.Keys.Delete:
+                    case System.Windows.Forms.Keys.Home:
+                    case System.Windows.Forms.Keys.End:
+                    case System.Windows.Forms.Keys.PageUp:
+                    case System.Windows.Forms.Keys.PageDown:
+                    case System.Windows.Forms.Keys.Divide:
+                        sendInputs[0].Data.Keyboard.Flags |= KEYEVENTF_EXTENDEDKEY;
+                        break;
+                }
                 sendInputs[0].Data.Keyboard.Scan = MapVirtualKey(key, MAPVK_VK_TO_VSC);
                 sendInputs[0].Data.Keyboard.Time = 0;
                 sendInputs[0].Data.Keyboard.Vk = key;
@@ -186,6 +203,22 @@ namespace DS4Windows
                 sendInputs[0].Type = INPUT_KEYBOARD;
                 sendInputs[0].Data.Keyboard.ExtraInfo = IntPtr.Zero;
                 sendInputs[0].Data.Keyboard.Flags = KEYEVENTF_SCANCODE | KEYEVENTF_KEYUP;
+                switch ((System.Windows.Forms.Keys)key)
+                {
+                    case System.Windows.Forms.Keys.Up:
+                    case System.Windows.Forms.Keys.Down:
+                    case System.Windows.Forms.Keys.Left:
+                    case System.Windows.Forms.Keys.Right:
+                    case System.Windows.Forms.Keys.Insert:
+                    case System.Windows.Forms.Keys.Delete:
+                    case System.Windows.Forms.Keys.Home:
+                    case System.Windows.Forms.Keys.End:
+                    case System.Windows.Forms.Keys.PageUp:
+                    case System.Windows.Forms.Keys.PageDown:
+                    case System.Windows.Forms.Keys.Divide:
+                        sendInputs[0].Data.Keyboard.Flags |= KEYEVENTF_EXTENDEDKEY;
+                        break;
+                }
                 sendInputs[0].Data.Keyboard.Scan = MapVirtualKey(key, MAPVK_VK_TO_VSC);
                 sendInputs[0].Data.Keyboard.Time = 0;
                 //sendInputs[0].Data.Keyboard.Vk = MapVirtualKey(key, MAPVK_VK_TO_VSC);
